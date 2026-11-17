@@ -4,13 +4,11 @@ import plotly.express as px
 
 st.set_page_config(layout="wide")
 
-# Título principal
 st.markdown(
     "<h2 style='color: #143870; font-family: sans-serif; margin-bottom: 10px;'>Acompanhamento das reuniões do Planes</h2>",
     unsafe_allow_html=True
 )
 
-# Dados completos (Guia Metodológico + Datas do cronograma)
 dados_iniciais = pd.DataFrame([
     {
         "Oficina": "Oficina 1",
@@ -54,26 +52,22 @@ dados_iniciais = pd.DataFrame([
     },
 ])
 
-# Tabela editável na barra lateral para alterar datas em tempo real
 st.sidebar.header("Parâmetros do Cronograma")
 df_editado = st.sidebar.data_editor(
     dados_iniciais[["Oficina", "Etapa", "Início", "Fim"]],
     hide_index=True
 )
 
-# Atualiza as datas na tabela completa caso o usuário edite na barra lateral
 dados_completos = dados_iniciais.copy()
 dados_completos["Início"] = df_editado["Início"]
 dados_completos["Fim"] = df_editado["Fim"]
 
-# Formata as datas para o padrão brasileiro (DD/MM/AAAA) na tabela visual
 def formatar_data(data_str):
     try:
         return pd.to_datetime(data_str).strftime("%d/%m/%Y")
     except Exception:
         return data_str
 
-# 1. TABELA ESTILIZADA (EXIBIDA PRIMEIRO)
 linhas_html = ""
 for idx, row in dados_completos.iterrows():
     bg_color = "#F4F4F4" if idx % 2 == 0 else "#FAFAFA"
@@ -109,7 +103,6 @@ tabela_html = (
 
 st.markdown(tabela_html, unsafe_allow_html=True)
 
-# 2. GRÁFICO DE GANTT (EXIBIDO ABAIXO DA TABELA)
 fig = px.timeline(
     df_editado,
     x_start="Início",

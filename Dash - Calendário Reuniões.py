@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 # Título principal
 st.markdown(
-    "<h2 style='color: #E67E00; font-family: sans-serif; margin-bottom: 10px;'>Acompanhamento das reuniões do Planes</h2>",
+    "<h2 style='color: #143870; font-family: sans-serif; margin-bottom: 10px;'>Acompanhamento das reuniões do Planes</h2>",
     unsafe_allow_html=True
 )
 
@@ -93,10 +93,10 @@ for idx, row in dados_completos.iterrows():
 tabela_html = (
     '<div style="background-color: #F4F4F4; border-radius: 14px; padding: 20px 24px 26px 24px; '
     'box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); font-family: sans-serif; margin-bottom: 24px;">'
-    '<h3 style="color: #E67E00; margin-top: 0; margin-bottom: 14px; font-size: 22px; font-weight: 700;">'
+    '<h3 style="color: #143870; margin-top: 0; margin-bottom: 14px; font-size: 22px; font-weight: 700;">'
     'Reuniões por objetivo estratégico e cronograma</h3>'
     '<table style="width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left;">'
-    '<thead><tr style="background-color: #F58200; color: #000000;">'
+    '<thead><tr style="background-color: #143870; color: #FFFFFF;">'
     '<th style="padding: 10px 14px; font-weight: 700;">Reunião / Oficina</th>'
     '<th style="padding: 10px 14px; font-weight: 700;">Principal Objetivo</th>'
     '<th style="padding: 10px 14px; font-weight: 700;">Resultado Esperado</th>'
@@ -116,12 +116,12 @@ fig = px.timeline(
     x_end="Fim",
     y="Oficina",
     text="Etapa",
-    color_discrete_sequence=["#F7C397"]
+    color_discrete_sequence=["#143870"]
 )
 
 fig.update_yaxes(autorange="reversed", title="", showgrid=True, gridcolor="#D9D9D9")
 fig.update_xaxes(title="", showgrid=True, gridcolor="#D9D9D9", tickformat="%b\n%Y")
-fig.update_traces(textposition="inside", insidetextanchor="start", textfont=dict(color="#222222", size=13))
+fig.update_traces(textposition="inside", insidetextanchor="start", textfont=dict(color="#FFFFFF", size=13))
 fig.update_layout(
     plot_bgcolor="white",
     paper_bgcolor="#F4F4F4",
